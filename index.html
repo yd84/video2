@@ -2,34 +2,92 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>视频播放</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>视频展示</title>
+
   <style>
+    /* 页面整体样式 */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
+      background-color: #111;
+      color: #fff;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      padding: 32px 16px;
     }
-    main {
-      width: min(960px, 94vw);
+
+    /* 视频与标题的整体容器 */
+    .video-container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
     }
+
+    /* 视频标题 */
+    .video-title {
+      margin: 0 0 24px;
+      text-align: center;
+      font-size: clamp(22px, 3vw, 36px);
+      font-weight: 600;
+      line-height: 1.4;
+      color: #fff;
+      overflow-wrap: anywhere;
+    }
+
+    /* 视频播放器 */
     video {
+      display: block;
       width: 100%;
       height: auto;
-      display: block;
+      max-height: 78vh;
+      object-fit: contain;
+      background-color: #000;
+      margin: 0 auto;
+    }
+
+    /* 手机等小屏幕设备 */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      .video-title {
+        margin-bottom: 16px;
+        font-size: 22px;
+      }
+
+      video {
+        max-height: 70vh;
+      }
     }
   </style>
 </head>
+
 <body>
-  <main>
+  <main class="video-container">
+
+    <!-- 修改这里的视频标题 -->
+    <h1 class="video-title">
+      国创赛演示视频demo2
+    </h1>
+
+    <!-- 保持原有的视频文件名 -->
     <video controls playsinline preload="metadata">
       <source src="./video.mp4" type="video/mp4">
       当前浏览器不支持播放此视频。
     </video>
+
   </main>
 </body>
 </html>
+
